@@ -1,10 +1,10 @@
 module.exports = (sequelize, DataTypes) => {
   const Permission = sequelize.define('permission', {
-    businessId: {
+    companyId: {
       type: DataTypes.INTEGER,
       primaryKey: true,
       references: {
-        model: 'business',
+        model: 'company',
         key: 'id'
       }
     },
@@ -31,13 +31,13 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
     uniqueKeys: {
       unique_permission: {
-        fields: ['businessId', 'userId']
+        fields: ['companyId', 'userId']
       }
     }
   });
 
   Permission.associate = models => {
-    Permission.belongsTo(models.business);
+    Permission.belongsTo(models.company);
     Permission.belongsTo(models.user);
   };
 

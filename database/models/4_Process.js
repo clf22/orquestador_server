@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       defaultValue: true
     },
-    idBusiness: {
+    idCompany: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'business',
+        model: 'company',
         key: 'id'
       },
     }
@@ -27,7 +27,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
   });
 
-  Process.belongsTo(sequelize.models.business, { foreignKey: 'idBusiness' });
+  Process.belongsTo(sequelize.models.company, { foreignKey: 'idCompany' });
 
   return Process;
 }

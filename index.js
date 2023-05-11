@@ -2,6 +2,7 @@ const express = require('express');
 
 const rolRouter = require('./routes/rol.route');
 const userRouter = require('./routes/user.route');
+const businessRouter = require('./routes/business.route')
 
 const app = express();
 // Se carga librerias en la aplicacion
@@ -15,6 +16,7 @@ app.use('/api', apiRouter);
 // Agregar los routers a este router principal
 apiRouter.use('/rol', rolRouter);
 apiRouter.use('/user', userRouter);
+apiRouter.use('/company', businessRouter);
 
 // Puerto del servidor
 const port = 3000;
