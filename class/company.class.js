@@ -15,9 +15,7 @@ module.exports = class Company {
     let where = {}
     if(id) where.id = id
     if(name) where.name = name
-    console.log(visible);
     if(visible || typeof visible !== 'undefined') where.visible = visible
-    console.log(where)
     return models.company.findAll({ where })
   }
 }
