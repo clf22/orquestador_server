@@ -19,7 +19,7 @@ const models = {};
 
 const normalizedPath = join(__dirname, './models');
 readdirSync(normalizedPath)
-  .filter((file) => file !== 'connection.js')
+  // .filter((file) => file !== 'connection.js')
   .forEach((file) => {
     const model = (require(`./models/${file}`)(sequelize, Sequelize.DataTypes))
     models[model.name] = model;

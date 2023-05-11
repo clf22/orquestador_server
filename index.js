@@ -1,10 +1,22 @@
 const express = require('express');
-const router = require('./routes/job.js');
+
+const rolRouter = require('./routes/rol.route');
+const userRouter = require('./routes/user.route');
 
 const app = express();
+// Se carga librerias en la aplicacion
+app.use(express.json()); // Analiza los cuerpos de las solicitudes con formato JSON
+app.use(express.urlencoded({ extended: true })); // Analiza los cuerpos de las solicitudes codificadas en URL
+
+// Crear el router principal
+const apiRouter = express.Router();
+app.use('/api', apiRouter);
+
+// Agregar los routers a este router principal
+apiRouter.use('/rol', rolRouter);
+apiRouter.use('/user', userRouter);
 
 // Puerto del servidor
-app.use(router)
 const port = 3000;
 
 app.listen(port, () => {
