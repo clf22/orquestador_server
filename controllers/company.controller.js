@@ -1,9 +1,9 @@
 const Business = require("../class/company.class")
 
 
-const rolCtrl = {}
+const companyCtrl = {}
 
-rolCtrl.create = async (req, res) => {
+companyCtrl.create = async (req, res) => {
   try {
     let {name, visible} = req.body
     let [newUser, created] = await Business.create({name, visible})
@@ -15,7 +15,7 @@ rolCtrl.create = async (req, res) => {
   }
 }
 
-rolCtrl.update = async (req, res) => {
+companyCtrl.update = async (req, res) => {
   try {
     let id = req.params.id
     let {name, visible} = req.body
@@ -27,7 +27,7 @@ rolCtrl.update = async (req, res) => {
   }
 }
 
-rolCtrl.get = async (req, res) => {
+companyCtrl.get = async (req, res) => {
   try {
     let {id} = req.params
     let {name, visible} = req.body
@@ -39,4 +39,4 @@ rolCtrl.get = async (req, res) => {
   }
 }
 
-module.exports = rolCtrl
+module.exports = companyCtrl
