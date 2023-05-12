@@ -4,6 +4,7 @@ const rolRouter = require('./routes/rol.route');
 const userRouter = require('./routes/user.route');
 const companyRouter = require('./routes/company.route')
 const permissionRouter = require('./routes/permission.router')
+const processRouter = require('./routes/process.route')
 
 const app = express();
 // Se carga librerias en la aplicacion
@@ -19,6 +20,7 @@ apiRouter.use('/rol', rolRouter);
 apiRouter.use('/user', userRouter);
 apiRouter.use('/company', companyRouter);
 apiRouter.use('/permission', permissionRouter)
+apiRouter.use('/process', processRouter)
 
 // Puerto del servidor
 const port = 3000;
