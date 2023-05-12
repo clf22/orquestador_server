@@ -25,7 +25,16 @@ module.exports = (sequelize, DataTypes) => {
         model: 'process',
         key: 'id'
       }
-    }
+    },
+    status: {
+      type: DataTypes.ENUM('PENDING', 'IN PROGRESS', 'SUCCESS', 'ERROR', 'STOPPING', 'STOPPED', 'KILLING', 'KILLED'),
+      allowNull: false,
+      defaultValue: 'PENDING'
+    },
+    finishAt: {
+      type: DataTypes.DATE,
+      allowNull: true
+    },
   }, {
     tableName: 'job',
     timestamps: true,
