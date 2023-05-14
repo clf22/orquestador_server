@@ -3,12 +3,12 @@ const { models } = require('../database/connection')
 module.exports = class Process {
   constructor() {}
 
-  static create({name, idCompany, visible = 1}) {
-    return models.process.findOrCreate({ where: {name}, defaults: { visible, idCompany } })
+  static create({name, idCompany=1, idSocket, visible = 1}) {
+    return models.process.findOrCreate({ where: {name}, defaults: { visible, idCompany, idSocket } })
   }
 
-  static update({id, name, idCompany, visible}) {
-    return models.process.update({ name, visible, idCompany }, { where: {id} })
+  static update({id, name, idCompany, visible, idSocket}) {
+    return models.process.update({ name, visible, idCompany, idSocket }, { where: {id} })
   }
 
   static get({id, name, idCompany, visible}){

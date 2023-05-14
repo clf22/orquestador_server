@@ -7,7 +7,12 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
+    },
+    idSocket: {
+      type: DataTypes.STRING,
+      allowNull: true
     },
     visible: {
       type: DataTypes.BOOLEAN,

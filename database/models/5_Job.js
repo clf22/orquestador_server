@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     },
     name: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false,
+      unique: true
     },
     active: {
       type: DataTypes.BOOLEAN,
@@ -40,13 +41,8 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: true,
   });
 
-  Job.associate = (models) => {
-    Job.belongsTo(models.process, {
-      foreignKey: {
-        allowNull: false
-      }
-    });
-  };
+
+  Job.belongsTo(sequelize.models.process, { foreignKey: 'idProcess' });
 
   return Job;
 };

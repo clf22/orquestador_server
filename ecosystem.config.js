@@ -1,18 +1,18 @@
+const ignore_watch = ['node_modules', '.git', 'upload', 'doc']
+
 module.exports = {
   apps: [
     {
-      name: 'index',
+      name: 'server',
       script: 'index.js',
       watch: ['.'],
       watch_delay: 1000,
-      args: ['--color'],
-      ignore_watch: ['node_modules', '.git', 'upload'],
+      args: ['--color', '--watch'],
+      ignore_watch,
       env: {
-        ENVIRONMENT: 'pro'
+        ENVIRONMENT: 'pro',
+        NAME: 'server'
       },
-      env_pre: {
-        ENVIRONMENT: 'pre'
-      }
-    }
+    },
   ]
 }
