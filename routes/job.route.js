@@ -7,6 +7,6 @@ const router = express.Router();
 router.post('/', jobCtrl.create);
 router.patch('/:id', jobCtrl.update);
 router.get('/:id?', jobCtrl.get);
-router.patch('/kill/:id', jobCtrl.stop);
+router.patch('/kill/:id', jobCtrl.kill);
 
 module.exports = router;

@@ -8,11 +8,13 @@ const companyRouter = require('./routes/company.route')
 const permissionRouter = require('./routes/permission.router')
 const processRouter = require('./routes/process.route')
 const jobRouter = require('./routes/job.route')
+const cors = require('cors')
 
 const app = express();
 // Se carga librerias en la aplicacion
 app.use(express.json()); // Analiza los cuerpos de las solicitudes con formato JSON
 app.use(express.urlencoded({ extended: true })); // Analiza los cuerpos de las solicitudes codificadas en URL
+app.use(cors()); //Uso del cors
 
 // Crear el router principal
 const apiRouter = express.Router();
