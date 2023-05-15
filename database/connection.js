@@ -4,7 +4,7 @@ const { readdirSync } = require('fs');
 
 // crear instancia de sequelize con la conexión a la base de datos
 const sequelize = new Sequelize('PRUEBAS', 'adminRPA', 'Linux1000', {
-  host: '192.168.1.50',
+  host: 'localhost',
   dialect: 'postgres',
   port: 5432,
   logging: false,
