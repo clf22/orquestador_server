@@ -3,14 +3,14 @@ const { join } = require('path');
 const { readdirSync } = require('fs');
 
 // crear instancia de sequelize con la conexión a la base de datos
-const sequelize = new Sequelize('PRUEBAS', 'adminRPA', 'Linux1000', {
+const sequelize = new Sequelize('orquestador', 'adminRPA', 'Linux1000', {
   host: 'localhost',
   dialect: 'postgres',
   port: 5432,
   logging: false,
   define: {
     timestamps: true,
-    schema: 'ORQUESTADOR', // añadir schema ORQUESTADOR
+    schema: 'dev',
   },
 });
 
