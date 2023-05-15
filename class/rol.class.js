@@ -20,6 +20,6 @@ module.exports = class Rol {
   }
 
   static getHeader() {
-    return Object.keys(models.rol.tableAttributes)
+    return Object.entries(models.rol.tableAttributes)
   }
 }

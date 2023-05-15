@@ -25,7 +25,7 @@ module.exports = class User {
   }
 
   static getHeader() {
-    return Object.keys(models.user.tableAttributes)
+    return Object.entries(models.user.tableAttributes)
   }
 
 }
