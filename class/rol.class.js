@@ -18,4 +18,8 @@ module.exports = class Rol {
     if(visible || typeof visible !== 'undefined') where.visible = visible
     return models.rol.findAll({ where })
   }
+
+  static getHeader() {
+    return Object.keys(models.rol.tableAttributes)
+  }
 }

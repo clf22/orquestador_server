@@ -40,4 +40,13 @@ userCtrl.get = async (req, res) => {
   }
 }
 
+userCtrl.getHeaders = (req, res) => {
+  try {
+    res.status(200).send(User.getHeader())
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error)
+  }
+}
+
 module.exports = userCtrl

@@ -38,4 +38,13 @@ rolCtrl.get = async (req, res) => {
   }
 }
 
+rolCtrl.getHeaders = (req, res) => {
+  try {
+    res.status(200).send(Rol.getHeader())
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error)
+  }
+}
+
 module.exports = rolCtrl

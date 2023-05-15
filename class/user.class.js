@@ -24,4 +24,8 @@ module.exports = class User {
     return models.user.findAll({ where })
   }
 
+  static getHeader() {
+    return Object.keys(models.user.tableAttributes)
+  }
+
 }
