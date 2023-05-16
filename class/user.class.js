@@ -25,7 +25,11 @@ module.exports = class User {
   }
 
   static getHeader() {
-    return Object.entries(models.user.tableAttributes)
+    let fields = Object.entries(models.user.tableAttributes)
+    for(let field of fields) {
+      field[1].dataType = models.user.rawAttributes[field[0]].type.key;
+    }
+    return fields
   }
 
 }

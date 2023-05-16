@@ -20,6 +20,10 @@ module.exports = class Rol {
   }
 
   static getHeader() {
-    return Object.entries(models.rol.tableAttributes)
+    let fields = Object.entries(models.rol.tableAttributes)
+    for(let field of fields) {
+      field[1].dataType = models.rol.rawAttributes[field[0]].type.key;
+    }
+    return fields
   }
 }
