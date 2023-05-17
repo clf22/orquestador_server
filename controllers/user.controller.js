@@ -40,9 +40,10 @@ userCtrl.get = async (req, res) => {
   }
 }
 
-userCtrl.getHeaders = (req, res) => {
+userCtrl.getHeaders = async (req, res) => {
   try {
-    res.status(200).send(User.getHeader())
+    const headers = await User.getHeader()
+    res.status(200).send(headers)
   } catch (error) {
     console.error(error);
     res.status(500).send(error)

@@ -24,10 +24,13 @@ module.exports = class User {
     return models.user.findAll({ where })
   }
 
-  static getHeader() {
+  static async getHeader() {
     let fields = Object.entries(models.user.tableAttributes)
     for(let field of fields) {
       field[1].dataType = models.user.rawAttributes[field[0]].type.key;
+      if (field[1].references) {
+        field[1].options = await models[field[1].references.model].findAll({where: {visible:true}})
+      }
     }
     return fields
   }
