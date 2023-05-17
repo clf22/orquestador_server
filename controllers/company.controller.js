@@ -39,4 +39,13 @@ companyCtrl.get = async (req, res) => {
   }
 }
 
+companyCtrl.getHeaders = (req, res) => {
+  try {
+    res.status(200).send(Business.getHeader())
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error)
+  }
+}
+
 module.exports = companyCtrl

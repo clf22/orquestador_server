@@ -18,4 +18,12 @@ module.exports = class Company {
     if(visible || typeof visible !== 'undefined') where.visible = visible
     return models.company.findAll({ where })
   }
+
+  static getHeader() {
+    let fields = Object.entries(models.rol.tableAttributes)
+    for(let field of fields) {
+      field[1].dataType = models.rol.rawAttributes[field[0]].type.key;
+    }
+    return fields
+  }
 }
