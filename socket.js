@@ -17,9 +17,18 @@ io.on('connection', socket => {
           case 'process':
             let processItem = await Process.get({name: proc.name})
             if(processItem.length === 0) {
-              let [item, created] = await Process.create({name: proc.name})
-              idProcess = item.id
-              if(created) stopJobs = true
+              try {
+                let [item, created] = await Process.create({name: proc.name})
+                idProcess = item.id
+                if(created) stopJobs = true
+              } catch (error) {
+                for(let process of data) {
+                  if(proc.name === process.name) continue
+                  await desconectar({socket, process})
+                }
+                desconectar({socket, process: proc})
+                break
+              }
             } else {
               idProcess = processItem[0].id
               await processItem[0].update({ idSocket: socket.id })
@@ -42,6 +51,7 @@ io.on('connection', socket => {
   
   socket.emit('checkProcessResources')
   socket.on('infoProcessResources', async data => {
+    console.log(data);
   })
 
   socket.on('disconnect', () => {
@@ -50,7 +60,12 @@ io.on('connection', socket => {
 })
 
 function desconectar({socket, process}) {
-  socket.emit('logOut', process.name)
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      socket.emit('logOut', process.name)
+      resolve()
+    }, 1000);
+  })
 }
 
 module.exports = io
