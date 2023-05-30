@@ -19,4 +19,15 @@ module.exports = class Process {
     if(visible || typeof visible !== 'undefined') where.visible = visible
     return models.process.findAll({ where })
   }
+
+  static async getHeader() {
+    let fields = Object.entries(models.process.tableAttributes)
+    for(let field of fields) {
+      field[1].dataType = models.process.rawAttributes[field[0]].type.key;
+      if (field[1].references) {
+        field[1].options = await models[field[1].references.model].findAll({where: {visible:true}})
+      }
+    }
+    return fields
+  }
 }

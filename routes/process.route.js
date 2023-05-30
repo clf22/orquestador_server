@@ -6,6 +6,7 @@ const router = express.Router();
 // Ruta para obtener todos los trabajos
 router.post('/', processCtrl.create);
 router.patch('/:id', processCtrl.update);
+router.get('/header', processCtrl.getHeaders);
 router.get('/:id?', processCtrl.get);
 
 module.exports = router;

@@ -22,6 +22,7 @@ io.on('connection', socket => {
                 idProcess = item.id
                 if(created) stopJobs = true
               } catch (error) {
+                console.error(error);
                 for(let process of data) {
                   if(proc.name === process.name) continue
                   await desconectar({socket, process})
@@ -51,7 +52,8 @@ io.on('connection', socket => {
   
   socket.emit('checkProcessResources')
   socket.on('infoProcessResources', async data => {
-    console.log(data);
+    // Devuelve los datos del proceso
+    // console.log(data);
   })
 
   socket.on('disconnect', () => {

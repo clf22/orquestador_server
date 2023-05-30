@@ -38,4 +38,14 @@ processCtrl.get = async (req, res) => {
   }
 }
 
+processCtrl.getHeaders = async (req, res) => {
+  try {
+    const headers = await Process.getHeader()
+    res.status(200).send(headers)
+  } catch (error) {
+    console.error(error);
+    res.status(500).send(error)
+  }
+}
+
 module.exports = processCtrl
